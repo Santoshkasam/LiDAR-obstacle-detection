@@ -7,3 +7,9 @@ The goal of the project is to consistantly detect obstacles in a real LiDAR Poin
 1. Load the PCL Point Cloud
 2. Filter the Point Cloud 
 3. Segment the points into obstacle cloud and ground plane cloud
+4. Cluster the points that form the objects
+5. Apply bounding boxes on the clustered objects
+
+Following are the detailed explanations of these steps
+
+## Filtering
