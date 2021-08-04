@@ -33,5 +33,5 @@ The dense point cloud is filtered to decrease the computation time. following ar
  
 ## Bounding Boxes
  
-## End result
+
 
