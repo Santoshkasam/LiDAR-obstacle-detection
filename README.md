@@ -13,3 +13,8 @@ The goal of the project is to consistantly detect obstacles in a real LiDAR Poin
 Following are the detailed explanations of these steps
 
 ## Filtering
+The dense point cloud is filtered to decrease the computation time. following are the methods implemented:
+1. The point cloud is downsampled by applying voxel grid filter of grid size = 0.18m, that leaves single point per cell. 
+2. The points beyond the required range are cropped to eliminate redundant data. 
+3. The ego car roof points are also removed
+
