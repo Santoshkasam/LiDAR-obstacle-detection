@@ -10,7 +10,6 @@ The point cloud used in this project is obtained using a Velodyne VLP-64 Lidar, 
 
 ### Point Cloud
 The projection of lidar reflections onto a vector space, after a 360degree scan, results in a point cloud that looks as follows:<br/>
-<br/>
 
 ![raw point cloud](https://user-images.githubusercontent.com/48198017/128407760-0fa6502d-bdde-41dc-87b2-82eaa8db38f1.png)
 
