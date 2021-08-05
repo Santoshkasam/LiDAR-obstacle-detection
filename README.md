@@ -41,7 +41,8 @@ The point cloud is segmented in order to omit ground plane for object detection.
 ## Clustering 
  
 Clustering is performed to identify groups of points that represent unique objects. This objective is achieved in two stages:
-**Stage I**: Populate Kd-Tree
+
+ **Stage I**: Populate Kd-Tree
 Kd-Tree is a binary tree data structure in which each node is a K-dimnesional point. The points in the data cloud are arranged in the structure of a Kd-tree
 
  
