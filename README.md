@@ -23,12 +23,12 @@ Following are the detailed explanations of these steps
 
 ## Filtering
 The dense point cloud is filtered to decrease the computation time. following are the methods implemented:
-1. The point cloud is downsampled by applying voxel grid filter with a grid size of 0.18m, that leaves single point per cell. 
-2. The points beyond the required range are cropped to eliminate redundant data. 
-3. The ego car roof points are also removed as the ego car is not considered as an obstacle. 
+1. The point cloud is downsampled by applying voxel grid filter with a grid size of 0.18m, that leaves single point per cell. This is performed using PCL VoxelGrid object. 
+2. The points beyond the required range are cropped to eliminate redundant data. This is performed using PCL CropBox class object.
+3. The ego car roof points are also removed as the ego car is not considered as an obstacle. This is also performed using PCL  CropBox object.
  
 ## Segmentation
-The point cloud is segmented in order to omit ground plane for object detection. The identification and segmentation of the point cloud is performed as follows:
+The point cloud is segmented in order to omit ground plane for object detection. It is performed using Ransac algorithm as follows:
  1. 
  2.
  3.
