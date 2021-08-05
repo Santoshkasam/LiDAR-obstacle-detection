@@ -53,8 +53,8 @@ Clustering is performed to identify groups of points that represent unique objec
  3. Find the neighbours of the point within the distance tolerance, that are un-clustered.
  4. Find the neighbours of the points identified in the previous step.
  5. Continue the process until all the nearest neighbours are identified.
- 6. Store this as a cluster
- 7. Select another un-clustered point and repeat the process from step 3, until no points are left to be clustered.
+ 6. Store these points as a cluster
+ 7. Select another un-clustered point and repeat the process from step 3, until no points are left in the cloud.
  8. At the end, store only those clusters whose size is between the range of min_size and max_size and discard the rest.<br/> 
  ![clustering](https://user-images.githubusercontent.com/48198017/128404757-97abbbb5-5c79-447e-afd8-b9740b4a2e1d.PNG)
 
