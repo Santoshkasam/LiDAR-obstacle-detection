@@ -25,8 +25,8 @@ Following are the detailed explanations of these steps
 ## Filtering
 The dense point cloud is filtered to decrease the computation time. following are the methods implemented:
 1. The point cloud is downsampled by applying a voxel grid filter with a grid size of 0.18m. It leaves a single point per cell. This process is performed using the PCL VoxelGrid object. 
-2. The points beyond the required range are cropped to eliminate redundant data. This is performed using the PCL CropBox class object.
-3. The ego car roof points are also removed as the ego car is not considered an obstacle. This is also performed using the PCL  CropBox object.<br/> 
+2. The points beyond the required range are cropped to eliminate redundant data. This is performed using the PCL CropBox object.
+3. The roof points of the ego car are also removed as they are not considered an obstacle. This is also performed using the PCL  CropBox object.<br/> 
 
 ![downsampled small](https://user-images.githubusercontent.com/48198017/128407450-1f9be9bb-9ee7-40aa-a32d-5d728781336b.png)
 
