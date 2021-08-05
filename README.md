@@ -10,6 +10,7 @@ The point cloud used in this project is obtained using a Velodyne VLP-64 Lidar, 
 
 ### Point Cloud
 The projection of lidar reflections onto a vector space, after a 360degree scan, results in a point cloud that looks as follows:<br/>
+<br/>
 ![raw point cloud](https://user-images.githubusercontent.com/48198017/128407760-0fa6502d-bdde-41dc-87b2-82eaa8db38f1.png)
 
 
@@ -32,6 +33,7 @@ The dense point cloud is filtered to decrease the computation time. following ar
 1. The point cloud is downsampled by applying a voxel grid filter with a grid size of 0.18m. It leaves a single point per cell. This process is performed using the PCL VoxelGrid object. 
 2. The points beyond the required range are cropped to eliminate redundant data. This is performed using the PCL CropBox class object.
 3. The ego car roof points are also removed as the ego car is not considered an obstacle. This is also performed using the PCL  CropBox object.<br/> 
+<br/>
 ![downsampled small](https://user-images.githubusercontent.com/48198017/128407450-1f9be9bb-9ee7-40aa-a32d-5d728781336b.png)
 
 
@@ -44,6 +46,7 @@ The point cloud is segmented to omit the ground plane for obstacle detection. Th
 4. If the current set contains more inliers than the previous one, the current one is stored.  
 5. After *max_iterations* the set with the maximum number of inliers is stored as the ground plane cloud.
 6. The outliers are stored as the object cloud.<br/>
+<br/>
 ![segmentation_small](https://user-images.githubusercontent.com/48198017/128407484-5f7ba820-b42f-40c0-9c5d-adc407a7ff6d.png)
 
 
@@ -59,6 +62,7 @@ Clustering is performed to identify groups of points that represent unique obsta
  6. Store these points as a cluster
  7. Select another un-clustered point and repeat the process from step 3, until no points are left in the cloud.
  8. At the end, store only those clusters whose size is between the range of min_size and max_size and discard the rest.<br/> 
+ <br/>
  ![clustering smaller](https://user-images.githubusercontent.com/48198017/128407508-b5abde38-b7c6-4954-a70a-9a1b634c3118.png)
 
  
