@@ -21,8 +21,8 @@ The projection of lidar reflections onto a vector space, after a 360degree scan,
 1. Load the PCL Point Cloud.
 2. Filter the Point Cloud to reduce the density.
 3. Segment the points into obstacle cloud and ground plane cloud.
-4. Cluster the points that form the objects.
-5. Apply bounding boxes on the clustered objects.
+4. Cluster the points that form the obstacles.
+5. Apply bounding boxes on the clustered obstacles.
 
 Following are the detailed explanations of these steps
 
@@ -35,7 +35,7 @@ The dense point cloud is filtered to decrease the computation time. following ar
 
  
 ## Segmentation
-The point cloud is segmented to omit the ground plane for object detection. The segmentation is performed using the following Ransac algorithm:
+The point cloud is segmented to omit the ground plane for obstacle detection. The segmentation is performed using the following Ransac algorithm:
 1. Randomly sample three points from the cloud and Fit a plane using these three points.
 2. Calculate the distance of each point in the cloud from the plane. 
 3. If the distance is smaller than the tolerance, add the Index of the point to the inliers set.
@@ -47,7 +47,7 @@ The point cloud is segmented to omit the ground plane for object detection. The 
 
 ## Clustering 
  
-Clustering is performed to identify groups of points that represent unique objects. This objective is achieved by the Euclidien clustering algorithm using a Kd-Tree data structure. The algorithm is as follows:
+Clustering is performed to identify groups of points that represent unique obstacles. This objective is achieved by the Euclidien clustering algorithm using a Kd-Tree data structure. The algorithm is as follows:
 1. Populate a Kd-Tree with the point cloud data.
  2. Select a point from the point cloud. 
  3. Find the neighbours of the point within the distance tolerance, that are un-clustered.
