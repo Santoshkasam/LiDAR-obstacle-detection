@@ -29,14 +29,13 @@ The dense point cloud is filtered to decrease the computation time. following ar
  
 ## Segmentation
 The point cloud is segmented in order to omit ground plane for object detection. It is performed using the following Ransac algorithm:
-1. Randomly sample three points from the cloud.
-2. Fit a plane with these three points
-3. Calculate distance of each point in the cloud from the plane
- if the distance is smaller than tolerance then the point is considered as an inlier. 
- 
+1. Randomly sample three points from the cloud and Fit a plane using these three points.
+2. Calculate the distance of each point in the cloud from the plane. 
+3. If the distance is smaller than tolerance, add the index of the point to the inliers set.
+4. If the current set contains more inliers than the previous one, the current one is stored.  
+5. After *max_iterations* the set with maximum number of inliers is stored as the ground plane cloud.
+6. The outliers are stored as the object cloud.
 
- 
- 
 ## Clustering 
  
 ## Bounding Boxes
