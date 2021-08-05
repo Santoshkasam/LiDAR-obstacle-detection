@@ -1,5 +1,5 @@
 # Lidar Obstacle Detection
-The goal of the project is to consistantly detect obstacles in a real lidar point cloud stream. This is achieved by filtering, segemeting and clustering the point cloud. Lidar is an active sensor the provides real-time spatial perception of the environment.
+The goal of the project is to consistantly detect obstacles in a real lidar point cloud stream. This is achieved by filtering, segemeting and clustering the point cloud. Lidar is an active sensor that provides real-time spatial perception of the environment.
 
 ![ObstacleDetectionFPS](https://user-images.githubusercontent.com/48198017/128245366-c20b806b-392d-42f2-9f7c-ce4bff5607dd.gif)
 
