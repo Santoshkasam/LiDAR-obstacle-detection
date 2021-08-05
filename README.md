@@ -31,7 +31,8 @@ The dense point cloud is filtered to decrease the computation time. following ar
 1. The point cloud is downsampled by applying a voxel grid filter with a grid size of 0.18m. It leaves a single point per cell. This process is performed using the PCL VoxelGrid object. 
 2. The points beyond the required range are cropped to eliminate redundant data. This is performed using the PCL CropBox class object.
 3. The ego car roof points are also removed as the ego car is not considered an obstacle. This is also performed using the PCL  CropBox object.<br/> 
-![downsampled](https://user-images.githubusercontent.com/48198017/128404644-1045278e-908f-4ba2-86fd-abeee9ce8c79.PNG)
+![downsampled small](https://user-images.githubusercontent.com/48198017/128407450-1f9be9bb-9ee7-40aa-a32d-5d728781336b.png)
+
 
  
 ## Segmentation
@@ -42,7 +43,8 @@ The point cloud is segmented to omit the ground plane for obstacle detection. Th
 4. If the current set contains more inliers than the previous one, the current one is stored.  
 5. After *max_iterations* the set with the maximum number of inliers is stored as the ground plane cloud.
 6. The outliers are stored as the object cloud.<br/>
-![segmentation](https://user-images.githubusercontent.com/48198017/128404709-4acb9bd7-dd8b-49d4-9559-f5e9ee6e19c5.PNG)
+![segmentation_small](https://user-images.githubusercontent.com/48198017/128407484-5f7ba820-b42f-40c0-9c5d-adc407a7ff6d.png)
+
 
 
 ## Clustering 
@@ -56,7 +58,7 @@ Clustering is performed to identify groups of points that represent unique obsta
  6. Store these points as a cluster
  7. Select another un-clustered point and repeat the process from step 3, until no points are left in the cloud.
  8. At the end, store only those clusters whose size is between the range of min_size and max_size and discard the rest.<br/> 
- ![clustering](https://user-images.githubusercontent.com/48198017/128404757-97abbbb5-5c79-447e-afd8-b9740b4a2e1d.PNG)
+ ![clustering smaller](https://user-images.githubusercontent.com/48198017/128407508-b5abde38-b7c6-4954-a70a-9a1b634c3118.png)
 
  
 ## Bounding Boxes
