@@ -64,7 +64,7 @@ Clustering is performed to identify groups of points that represent unique obsta
  A bounding box is applied to every cluster. It is a rectangular cuboid generated using the min and max points of a cluster.
  
 ## Final Notes
-Thus the obstacles in the point cloud stream are detected. All the code is written in C++ using PCL and STL libraries. The template functions make the code functional to multiple point data types like (X, Y, Z), (X, Y, Z, I) and so forth.
+Thus the obstacles in the point cloud stream are detected. The code is written in C++ using PCL and STL libraries. The template functions make the code functional to multiple point data types like (X, Y, Z), (X, Y, Z, I) and so forth.
  
  
 
