@@ -28,10 +28,13 @@ The dense point cloud is filtered to decrease the computation time. following ar
 3. The ego car roof points are also removed as the ego car is not considered as an obstacle. This is also performed using PCL  CropBox object.
  
 ## Segmentation
-The point cloud is segmented in order to omit ground plane for object detection. It is performed using Ransac algorithm as follows:
- 1. 
- 2.
- 3.
+The point cloud is segmented in order to omit ground plane for object detection. It is performed using the following Ransac algorithm:
+1. Randomly sample three points from the cloud.
+2. Fit a plane with these three points
+3. Calculate distance of each point in the cloud from the plane
+ if the distance is smaller than tolerance then the point is considered as an inlier. 
+ 
+
  
  
 ## Clustering 
