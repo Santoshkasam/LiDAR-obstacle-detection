@@ -31,6 +31,8 @@ The dense point cloud is filtered to decrease the computation time. following ar
 1. The point cloud is downsampled by applying a voxel grid filter with a grid size of 0.18m. It leaves a single point per cell. This process is performed using the PCL VoxelGrid object. 
 2. The points beyond the required range are cropped to eliminate redundant data. This is performed using the PCL CropBox class object.
 3. The ego car roof points are also removed as the ego car is not considered an obstacle. This is also performed using the PCL  CropBox object.
+![downsampled](https://user-images.githubusercontent.com/48198017/128404644-1045278e-908f-4ba2-86fd-abeee9ce8c79.PNG)
+
  
 ## Segmentation
 The point cloud is segmented to omit the ground plane for object detection. The segmentation is performed using the following Ransac algorithm:
@@ -40,6 +42,8 @@ The point cloud is segmented to omit the ground plane for object detection. The 
 4. If the current set contains more inliers than the previous one, the current one is stored.  
 5. After *max_iterations* the set with the maximum number of inliers is stored as the ground plane cloud.
 6. The outliers are stored as the object cloud.
+![segmentation](https://user-images.githubusercontent.com/48198017/128404709-4acb9bd7-dd8b-49d4-9559-f5e9ee6e19c5.PNG)
+
 
 ## Clustering 
  
@@ -52,6 +56,8 @@ Clustering is performed to identify groups of points that represent unique objec
  6. Store this as a cluster
  7. Select another un-clustered point and repeat the process from step 3, until no points are left to be clustered.
  8. At the end, store only those clusters whose size is between the range of min_size and max_size and discard the rest. 
+ ![clustering](https://user-images.githubusercontent.com/48198017/128404757-97abbbb5-5c79-447e-afd8-b9740b4a2e1d.PNG)
+
  
 ## Bounding Boxes
  A bounding box is applied to every cluster. It is a rectangular cuboid generated using the min and max points of a cluster.
