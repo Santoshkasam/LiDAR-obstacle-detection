@@ -25,28 +25,34 @@ Following are the detailed explanations of these steps
 
 ## Filtering
 The dense point cloud is filtered to decrease the computation time. following are the methods implemented:
-1. The point cloud is downsampled by applying voxel grid filter with a grid size of 0.18m, that leaves single point per cell. This is performed using PCL VoxelGrid object. 
-2. The points beyond the required range are cropped to eliminate redundant data. This is performed using PCL CropBox class object.
-3. The ego car roof points are also removed as the ego car is not considered as an obstacle. This is also performed using PCL  CropBox object.
+1. The point cloud is downsampled by applying a voxel grid filter with a grid size of 0.18m. It leaves a single point per cell. This process is performed using the PCL VoxelGrid object. 
+2. The points beyond the required range are cropped to eliminate redundant data. This is performed using the PCL CropBox class object.
+3. The ego car roof points are also removed as the ego car is not considered an obstacle. This is also performed using the PCL  CropBox object.
  
 ## Segmentation
-The point cloud is segmented in order to omit ground plane for object detection. It is performed using the following Ransac algorithm:
+The point cloud is segmented to omit the ground plane for object detection. The segmentation is performed using the following Ransac algorithm:
 1. Randomly sample three points from the cloud and Fit a plane using these three points.
 2. Calculate the distance of each point in the cloud from the plane. 
-3. If the distance is smaller than tolerance, add the index of the point to the inliers set.
+3. If the distance is smaller than the tolerance, add the Index of the point to the inliers set.
 4. If the current set contains more inliers than the previous one, the current one is stored.  
-5. After *max_iterations* the set with maximum number of inliers is stored as the ground plane cloud.
+5. After *max_iterations* the set with the maximum number of inliers is stored as the ground plane cloud.
 6. The outliers are stored as the object cloud.
 
 ## Clustering 
  
-Clustering is performed to identify groups of points that represent unique objects. This objective is achieved in two stages:
-
- **Stage I**: Populate Kd-Tree
-Kd-Tree is a binary tree data structure in which each node is a K-dimnesional point. The points in the data cloud are arranged in the structure of a Kd-tree
-
+Clustering is performed to identify groups of points that represent unique objects. This objective is achieved by the Euclidien clustering algorithm using a Kd-Tree data structure. The algorithm is as follows:
+1. Populate a Kd-Tree with the point cloud data.
+ 2. Select a point from the point cloud. 
+ 3. Find the neighbours of the point within the distance tolerance, that are un-clustered.
+ 4. Find the neighbours of the points identified in the previous step.
+ 5. Continue the process until all the nearest neighbours are identified.
+ 6. Store this as a cluster
+ 7. Select another un-clustered point and repeat the process from step 3, until no points are left to be clustered.
+ 8. At the end, store only those clusters whose size is between the range of min_size and max_size and discard the rest. 
  
 ## Bounding Boxes
+ A bounding box is applied to every cluster. It is a rectangular cuboid generated using the min and max points of a cluster.
+ 
  
 
 
